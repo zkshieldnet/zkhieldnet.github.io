@@ -24,15 +24,16 @@
       margin-top: 15px;
       border-collapse: collapse;
       border: 1px solid #999;
-      width: 400px;
+      width: 420px;
     }
-    table th, table td {
+    table td {
       border: 1px solid #999;
       padding: 8px 12px;
       text-align: left;
     }
-    table th {
-      font-weight: bold;
+    table tr:first-child td,
+    table tr:nth-child(2) td {
+      font-weight: normal;
     }
   </style>
 </head>
@@ -51,9 +52,9 @@
 
   <table>
     <tr>
-      <th></th>
-      <th>Prescribed Value</th>
-      <th>Measured Value</th>
+      <td></td>
+      <td>Prescribed Value</td>
+      <td>Measured Value</td>
     </tr>
     <tr>
       <td>CO</td>
