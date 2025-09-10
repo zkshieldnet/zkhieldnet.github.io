@@ -1,135 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>PUC Certificate Details — Static Replica</title>
-<style>
-  /* Page base */
-  html,body{height:100%;margin:0;padding:0;background:#fff;color:#000;font-family:Arial, sans-serif}
-  .page{max-width:1180px;margin:36px auto;padding:0 18px;box-sizing:border-box}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUC Certificate Details</title>
+    <style>
+        :root {
+            --text-color: #000000;
+            --background-color: #ffffff;
+            --link-color: #0000ee;
+            --border-color: #888888;
+        }
 
-  /* Header / topbar */
-  .topbar{display:flex;align-items:center;justify-content:space-between;background:transparent;padding:6px 0 18px}
-  .branding{display:flex;align-items:center;gap:14px}
-  .emblem{width:40px;height:60px;object-fit:contain}
-  .titles{line-height:1}
-  .titles .gov{font-size:13px;text-transform:uppercase;font-weight:700;letter-spacing:.4px}
-  .titles .dept{font-size:13px;font-weight:700;padding-left:0}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+            font-size: 16px;
+            /* Anti-aliasing for smoother font rendering */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-  /* Nav simplified */
-  .nav{margin:12px 0 26px;padding:8px 0;border-top:0;border-bottom:0}
-  .nav a{margin-right:18px;color:#111;text-decoration:none;font-size:14px}
+        /* Main container to constrain width and center the content */
+        .container {
+            max-width: 800px;
+        }
 
-  /* Main content */
-  h1{font-size:22px;margin:0 0 18px;font-weight:700}
-  .note{font-size:15px;margin:6px 0 8px}
-  .source-link{display:block;margin:6px 0 18px;font-size:15px;color:#06c;text-decoration:underline}
+        /* --- Typography --- */
+        .main-title {
+            font-size: 1.2em; /* Slightly larger than the body text */
+            font-weight: bold;
+            margin: 0 0 0.5em 0;
+            color: var(--text-color);
+        }
 
-  .meta-list{font-size:15px;line-height:1.6;margin:0 0 6px}
-  .meta-row{display:flex;align-items:flex-start;margin:6px 0}
-  .meta-label{width:260px;box-sizing:border-box}
-  .meta-value{flex:1}
+        .subtitle {
+            font-size: 1em;
+            margin: 0 0 1.5em 0;
+            line-height: 1.5;
+        }
 
-  /* Certificate table container */
-  .table-wrap{margin-top:20px}
-  .puc-table{
-    width:100%;
-    border:1px solid #cfcfcf;          /* thin outer border only */
-    border-collapse:separate;
-    border-spacing:0;
-    overflow:hidden;
-    box-sizing:border-box;
-    background:#fff;
-  }
-  .puc-table thead th{font-size:15px;padding:18px 22px 14px 22px;font-weight:400;text-align:center;color:#222}
-  .puc-table tbody td{font-size:15px;padding:22px 22px;border:none;font-weight:400}
-  /* Column widths roughly mimic screenshot */
-  .puc-table col:first-child{width:34%}
-  .puc-table col:nth-child(2){width:33%}
-  .puc-table col:nth-child(3){width:33%}
+        .subtitle a {
+            color: var(--link-color);
+            /* Underline is default, but we'll ensure it's there */
+            text-decoration: underline;
+        }
 
-  /* Footer */
-  .footer{margin:40px 0 12px;font-size:13px;color:#333}
-  .footer a{color:#0b66c3;text-decoration:none}
+        /* --- Details Section --- */
+        .details-grid {
+            display: grid;
+            /* Two columns: one for labels, one for values */
+            grid-template-columns: auto 1fr;
+            gap: 0.5rem 1rem; /* Row and column gap */
+            align-items: center;
+            margin-bottom: 1rem;
+        }
 
-  /* Desktop-first: constrain overall look to match screenshot */
-  @media (max-width:900px){
-    .meta-label{width:38%}
-    .puc-table thead th,.puc-table tbody td{padding:12px}
-  }
-</style>
+        .detail-label {
+            /* Ensures labels are aligned to the right, next to the values */
+            justify-self: left;
+            white-space: nowrap; /* Prevents labels from wrapping */
+        }
+        
+        .detail-value {
+            font-weight: normal;
+        }
+        
+        /* Specific handling for the vehicle type which spans the value column */
+        .vehicle-type {
+            grid-column: 2; /* Position this in the second column */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Table Section --- */
+        .results-table-wrapper {
+            margin-top: 0.5rem;
+        }
+
+        .results-table {
+            border-collapse: collapse;
+            width: auto;
+            border: 1px solid var(--border-color); /* Defines the outer border */
+        }
+
+        .results-table th,
+        .results-table td {
+            /* border attribute is removed to avoid inner grid lines */
+            padding: 0.8em 1.5em; /* Increased padding for a more spacious layout */
+            text-align: left;
+        }
+
+        .results-table th {
+            font-weight: normal; /* Headers are not bold in the screenshot */
+            background-color: transparent; /* Removed background for a cleaner look */
+            border-bottom: 1px solid var(--border-color); /* Separates header from body */
+        }
+        
+        /* Adds a very subtle line between rows in the table body */
+        .results-table tbody tr:not(:last-child) {
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+                font-size: 14px;
+            }
+
+            .details-grid {
+                /* Switch to a single column layout */
+                grid-template-columns: 1fr;
+                gap: 0.25rem 0; /* Reduce gap for stacked layout */
+            }
+
+            .detail-label {
+                justify-self: left;
+                font-weight: bold; /* Make labels bold for clarity */
+            }
+
+            .detail-value,
+            .vehicle-type {
+                /* Remove grid positioning to allow natural stacking */
+                grid-column: 1; 
+                padding-left: 0; /* Remove any indentation */
+                margin-bottom: 0.75em;
+            }
+            
+            /* Wrapper enables horizontal scrolling for the table on small screens */
+            .results-table-wrapper {
+                overflow-x: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="page">
-    <!-- Header / Branding -->
-    <div class="topbar">
-      <div class="branding">
-        <img class="emblem" src="" alt="emblem (placeholder)" />
-        <div class="titles">
-          <div class="gov">ministry of road transport and highways</div>
-          <div class="dept">Government of India</div>
+    <main class="container">
+        <h1 class="main-title">PUC Certificate Details</h1>
+        <p class="subtitle">
+            Please check response is coming from<br>
+            <a href="https://puc.parivahan.gov.in/">https://puc.parivahan.gov.in/...</a>
+        </p>
+
+        <!-- Using CSS Grid for precise alignment of labels and values -->
+        <div class="details-grid">
+            <span class="detail-label">Registration Number :</span>
+            <span class="detail-value">AS01BN5813</span>
+
+            <!-- This empty span acts as a placeholder in the first column for alignment -->
+            <span></span> 
+            <p class="vehicle-type">PETROL/CNG/LPG DRIVEN VEHICLES</p>
+
+            <span class="detail-label">Test Date:</span>
+            <span class="detail-value">10-Sep-2025</span>
+
+            <span class="detail-label">Valid Upto:</span>
+            <span class="detail-value">09-Mar-2026</span>
+
+            <span class="detail-label">Fees::</span>
+            <span class="detail-value">0.0</span>
+
+            <span class="detail-label">Pollution under control::</span>
+            <span class="detail-value">YES</span>
         </div>
-      </div>
-      <div class="top-links">
-        <!-- simplified nav controls -->
-        <a href="#">Home</a>
-        <a href="#main-content">Skip to main content</a>
-      </div>
-    </div>
-
-    <!-- Main content -->
-    <main id="main-content" role="main">
-      <h1>PUC Certificate Details Details</h1>
-
-      <div class="note">Please check response is coming from</div>
-      <a class="source-link" href="https://puc.parivahan.gov.in/">https://puc.parivahan.gov.in/...</a>
-
-      <div class="meta-list" aria-live="polite">
-        <div class="meta-row"><div class="meta-label">Registration Number :</div><div class="meta-value">AS01BN5813</div></div>
-        <div class="meta-row"><div class="meta-label"></div><div class="meta-value">PETROL/CNG/LPG DRIVEN VEHICLES</div></div>
-        <div class="meta-row"><div class="meta-label">Test Date:</div><div class="meta-value">10-Sep-2025</div></div>
-        <div class="meta-row"><div class="meta-label">Valid Upto:</div><div class="meta-value">09-Mar-2026</div></div>
-        <div class="meta-row"><div class="meta-label">Fees::</div><div class="meta-value">0.0</div></div>
-        <div class="meta-row"><div class="meta-label">Pollution under control::</div><div class="meta-value">YES</div></div>
-      </div>
-
-      <!-- Table: only outer border -->
-      <div class="table-wrap" aria-label="PUC values table">
-        <table class="puc-table" role="table">
-          <colgroup>
-            <col />
-            <col />
-            <col />
-          </colgroup>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Prescribed Value</th>
-              <th>Measured Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>CO</td>
-              <td style="text-align:center">0.5</td>
-              <td style="text-align:center">0.108</td>
-            </tr>
-            <tr>
-              <td>HC</td>
-              <td style="text-align:center">750.0</td>
-              <td style="text-align:center">61.0</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        
+        <div class="results-table-wrapper">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <!-- First header cell is intentionally empty -->
+                        <th></th>
+                        <th>Prescribed Value</th>
+                        <th>Measured Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CO</td>
+                        <td>0.5</td>
+                        <td>0.108</td>
+                    </tr>
+                    <tr>
+                        <td>HC</td>
+                        <td>750.0</td>
+                        <td>61.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
-
-    <!-- Footer -->
-    <div class="footer">
-      <div>Powered by National Informatics Centre. All Rights Reserved. Version::2.3.9.8</div>
-      <div style="margin-top:8px"><a href="https://www.nic.in/" target="_blank" rel="noopener">https://www.nic.in/</a></div>
-    </div>
-  </div>
 </body>
 </html>
+
