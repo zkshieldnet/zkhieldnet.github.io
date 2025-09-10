@@ -1,66 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-  }
-  h2 {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  table {
-    border-collapse: collapse;
-    width: 95%;
-    margin-top: 15px;
-    border: 1px solid #ccc; /* outer border only */
-  }
-  td, th {
-    border: none; /* remove inner borders */
-    padding: 12px 20px;
-    text-align: left;
-    font-weight: normal;
-  }
-  th {
-    font-weight: normal; /* not bold */
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>PUC Certificate Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 20px;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    p {
+      line-height: 1.6;
+      margin: 5px 0;
+    }
+    a {
+      color: blue;
+      text-decoration: underline;
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      margin-top: 20px;
+      border: 1px solid #aaa; /* outer border only */
+    }
+    th, td {
+      padding: 12px 18px;
+      font-weight: normal;
+      border: none; /* remove inner lines */
+    }
+    th:first-child, td:first-child {
+      width: 30%;
+    }
+    th {
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
+  <h2>PUC Certificate Details</h2>
 
-<h2>PUC Certificate Details Details</h2>
+  <p>Please check response is coming from<br>
+     <a href="https://puc.parivahan.gov.in/">https://puc.parivahan.gov.in/</a>
+  </p>
 
-<p>Please check response is coming from<br>
-<a href="https://puc.parivahan.gov.in/">https://puc.parivahan.gov.in/</a></p>
+  <p>
+    Registration Number : AS01BN5813<br>
+    PETROL/CNG/LPG DRIVEN VEHICLES<br>
+    Test Date: 10-Sep-2025<br>
+    Valid Upto: 09-Mar-2026<br>
+    Fees: 0.0<br>
+    Pollution under control: YES
+  </p>
 
-<p>
-Registration Number : AS01BN5813<br>
-&nbsp;&nbsp;&nbsp;&nbsp;PETROL/CNG/LPG DRIVEN VEHICLES<br>
-Test Date: 10-Sep-2025<br>
-Valid Upto: 09-Mar-2026<br>
-Fees:: 0.0<br>
-Pollution under control:: YES
-</p>
-
-<table>
-  <tr>
-    <td></td>
-    <td>Prescribed Value</td>
-    <td>Measured Value</td>
-  </tr>
-  <tr>
-    <td>CO</td>
-    <td>0.5</td>
-    <td>0.108</td>
-  </tr>
-  <tr>
-    <td>HC</td>
-    <td>750.0</td>
-    <td>61.0</td>
-  </tr>
-</table>
-
+  <table>
+    <tr>
+      <td></td>
+      <td>Prescribed Value</td>
+      <td>Measured Value</td>
+    </tr>
+    <tr>
+      <td>CO</td>
+      <td>0.5</td>
+      <td>0.108</td>
+    </tr>
+    <tr>
+      <td>HC</td>
+      <td>750.0</td>
+      <td>61.0</td>
+    </tr>
+  </table>
 </body>
 </html>
