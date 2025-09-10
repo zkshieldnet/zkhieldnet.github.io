@@ -1,416 +1,135 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head id="j_idt2"><link type="text/css" rel="stylesheet" href="/puc/javax.faces.resource/theme.css.xhtml?ln=primefaces-homologation" /><link type="text/css" rel="stylesheet" href="/puc/javax.faces.resource/grid-css.css.xhtml?ln=css" /><link type="text/css" rel="stylesheet" href="/puc/javax.faces.resource/css/bootstrap.css.xhtml?ln=bootstrap-3.3.1" /><link type="text/css" rel="stylesheet" href="/puc/javax.faces.resource/layout.css.xhtml?ln=css" /><link type="text/css" rel="stylesheet" href="/puc/javax.faces.resource/components.css.xhtml?ln=primefaces&amp;v=6.1" /><script type="text/javascript" src="/puc/javax.faces.resource/jquery/jquery.js.xhtml?ln=primefaces&amp;v=6.1"></script><script type="text/javascript" src="/puc/javax.faces.resource/jquery/jquery-plugins.js.xhtml?ln=primefaces&amp;v=6.1"></script><script type="text/javascript" src="/puc/javax.faces.resource/core.js.xhtml?ln=primefaces&amp;v=6.1"></script><script type="text/javascript" src="/puc/javax.faces.resource/components.js.xhtml?ln=primefaces&amp;v=6.1"></script><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';PrimeFaces.settings.projectStage='Development';}</script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate" />
-	<meta http-equiv="Pragma" content="no-cache" />
-
-<!-- 	&lt;meta http-equiv="Content-Security-Policy" content="default-src 'self'" /&gt; -->
-	<title>Welcome Transport Department</title>
-	<link rel="shortcut icon" type="image/x-icon" href="/puc/javax.faces.resource/images/vahan_icon.ico.xhtml" />
-	<!--     &lt;h:outputStylesheet library="css" name="style.css" /&gt;
-        &lt;h:outputStylesheet library="css" name="login-style.css" /&gt;--><script type="text/javascript" src="/puc/javax.faces.resource/common.js.xhtml?ln=js"></script><script type="text/javascript" src="/puc/javax.faces.resource/utils.js.xhtml?ln=js"></script><script type="text/javascript" src="/puc/javax.faces.resource/login.js.xhtml?ln=js"></script><script type="text/javascript" src="/puc/javax.faces.resource/md5.js.xhtml?ln=js"></script><script type="text/javascript" src="/puc/javax.faces.resource/sha256.js.xhtml?ln=js"></script><script type="text/javascript" src="/puc/javax.faces.resource/js/bootstrap.min.js.xhtml?ln=bootstrap-3.3.1"></script>
-	
-	<noscript>
-		<meta http-equiv="refresh" content="0;url=enablejava.html" />
-	</noscript>
-	<script>
-		function noBack() {
-			window.history.go(1);
-		}
-		
-		$(document).ready(function () {
-			IsNewTab();
-		    //Disable cut copy paste
-		    $('body').bind('cut copy paste', function (e) {
-		        e.preventDefault();
-		    });
-		   
-		    //Disable mouse right click
-		    $("body").on("contextmenu",function(e){
-		        return false;
-		    });
-		});
-		
-		function IsNewTab() {
-			  return $.cookie('TabOpen');
-			}
-
-			$(function() {
-			  if (!IsNewTab()) {
-			  //  $.cookie('TabOpen', "YES", {     path: '/'  });
-			    $.cookie('TabOpen', 'YES',{ expires: 365, secure: true,path: '/puc', domain:'https://staging.parivahan.nic.in/',}); 
-			    
-			    $(window).unload(function() {
-			      $.removeCookie('TabOpen', {
-			        path: '/'
-			      });
-			    });
-			  } else {
-			   alert('application already open in  one tab open');
-				 path: '/';
-			e.preventDefault();
-
-			   
-				//return false;
-			      //OR
-			    
-			  }
-			});
-	</script></head>
-
-<body>
-	
-	
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PUC Certificate Details — Static Replica</title>
 <style>
-.ui-icon-closethick {
-    background-position: -96px -128px;
-    background-color: #fff;
-}
+  /* Page base */
+  html,body{height:100%;margin:0;padding:0;background:#fff;color:#000;font-family:Arial, sans-serif}
+  .page{max-width:1180px;margin:36px auto;padding:0 18px;box-sizing:border-box}
+
+  /* Header / topbar */
+  .topbar{display:flex;align-items:center;justify-content:space-between;background:transparent;padding:6px 0 18px}
+  .branding{display:flex;align-items:center;gap:14px}
+  .emblem{width:40px;height:60px;object-fit:contain}
+  .titles{line-height:1}
+  .titles .gov{font-size:13px;text-transform:uppercase;font-weight:700;letter-spacing:.4px}
+  .titles .dept{font-size:13px;font-weight:700;padding-left:0}
+
+  /* Nav simplified */
+  .nav{margin:12px 0 26px;padding:8px 0;border-top:0;border-bottom:0}
+  .nav a{margin-right:18px;color:#111;text-decoration:none;font-size:14px}
+
+  /* Main content */
+  h1{font-size:22px;margin:0 0 18px;font-weight:700}
+  .note{font-size:15px;margin:6px 0 8px}
+  .source-link{display:block;margin:6px 0 18px;font-size:15px;color:#06c;text-decoration:underline}
+
+  .meta-list{font-size:15px;line-height:1.6;margin:0 0 6px}
+  .meta-row{display:flex;align-items:flex-start;margin:6px 0}
+  .meta-label{width:260px;box-sizing:border-box}
+  .meta-value{flex:1}
+
+  /* Certificate table container */
+  .table-wrap{margin-top:20px}
+  .puc-table{
+    width:100%;
+    border:1px solid #cfcfcf;          /* thin outer border only */
+    border-collapse:separate;
+    border-spacing:0;
+    overflow:hidden;
+    box-sizing:border-box;
+    background:#fff;
+  }
+  .puc-table thead th{font-size:15px;padding:18px 22px 14px 22px;font-weight:400;text-align:center;color:#222}
+  .puc-table tbody td{font-size:15px;padding:22px 22px;border:none;font-weight:400}
+  /* Column widths roughly mimic screenshot */
+  .puc-table col:first-child{width:34%}
+  .puc-table col:nth-child(2){width:33%}
+  .puc-table col:nth-child(3){width:33%}
+
+  /* Footer */
+  .footer{margin:40px 0 12px;font-size:13px;color:#333}
+  .footer a{color:#0b66c3;text-decoration:none}
+
+  /* Desktop-first: constrain overall look to match screenshot */
+  @media (max-width:900px){
+    .meta-label{width:38%}
+    .puc-table thead th,.puc-table tbody td{padding:12px}
+  }
 </style>
-
-
-
-
-	<div class="container-fluid topbar-menu  ">
-		<div class="mar-bot">
-			<div>
-				<div class="row">
-
-					<div class="col-md-6 left-position">
-						<div class="marquee marquee-top mar-common-f ">
-							<div>
-								<span>Online PUC Application</span>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-md-1"></div>
-
-					<div class="col-md-5 right-position top-pad-top   ">
-						<ul class="top-menu ">
-
-
-
-							<li><a href="#" title="Home"> <span class="glyphicon glyphicon-home"></span>Home
-							</a></li>
-							<li><a href="#main-content"> <span class="glyphicon glyphicon-arrow-down"></span> Skip to main content
-							</a></li>
-							<li><a href="#navbar"> <span class="glyphicon glyphicon-arrow-down"></span> Skip to navigation
-							</a></li>
-
-
-							<li><a href="#">A<sup>+</sup></a></li>
-							<li><a href="#">A</a></li>
-							<li><a href="#">A<sup>-</sup></a></li>
-<li><table>
-<tbody>
-<tr>
-<td><label style="color:white;"> | </label></td>
-<td>
-<form id="j_idt21" name="j_idt21" method="post" action="/puc/views/error.xhtml" enctype="application/x-www-form-urlencoded">
-<input type="hidden" name="j_idt21" value="j_idt21" />
-<span style="color:white; ">Choose your language</span><select name="j_idt23" size="1" style="margin-left:5px;" onchange="submit()">	<option value="hi">हिंदी</option>
-	<option value="en" selected="selected">English</option>
-	<option value="mr">मराठी</option>
-	<option value="ml">മലയാളം</option>
-	<option value="gu">ગુજરાતી</option>
-</select><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="5834858715122638788:4898911220232654993" />
-</form></td>
-</tr>
-</tbody>
-</table>
-
-		
-</li>
-						</ul>
-
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-	</div>
-
-
-
-
-<nav class="navbar  navigation-background hide-header mar-all " role="navigation">
-	<div class="ui-grid ui-grid-responsive ">
-		<div class="ui-grid-row " style="background-color:#dce9e6">
-			<div class="ui-grid-col-3 left_logo"><img id="j_idt30" src="/puc/javax.faces.resource/emblem-logo.png.xhtml?ln=images" class="img-responsive" alt="Parivahan Sewa" style="width:40px;  height:60px; " /><img id="j_idt31" src="/puc/javax.faces.resource/e-puc-logo.png.xhtml?ln=images" class="img-responsive digital-india" alt="Parivahan Sewa" />
-				<a style="display: inline-block;padding-left:20px;padding-top:8px;" class="top-space"> 
-				</a>
-				<a style="display: inline-block;width: 120px;margin-left: 242px;" class="top-space">
-
-				</a>
-			</div>
-			<div class="ui-grid-col-7">
-				<div class="heading_w left-position top-space">
-					<div class="font-bold text-welcome-heading welcome-heading-size text-uppercase">ministry of road transport and highways</div>
-					<div class="font-bold text-welcome-heading welcome-sub-heading-size " style="padding-left:180px;">Government of India</div>
-				</div>
-			</div>
-			<div class="ui-grid-col-2 left_logo" style="position: absolute;right: 0px;top: 10px;"><img id="j_idt33" src="/puc/javax.faces.resource/Digital-india-black.png.xhtml?ln=images" class="img-responsive digital-india" alt="Parivahan Sewa" />
-			</div>
-		</div>
-	</div>
-	</nav>
-	
-	<!-- &lt;nav class="navbar  navigation-background hide-header mar-all "
-		role="navigation"&gt;
-	&lt;div class="ui-grid ui-grid-responsive "&gt;
-		&lt;div class="ui-grid-row " style="background-color:#dce9e6"&gt;
-			&lt;div class="ui-grid-col-2 left_logo"&gt;
-				&lt;a style="display: inline-block;padding-left:20px;padding-top:8px;" class="top-space"&gt; &lt;p:graphicImage
-						library="images" name="emblem-logo.png" alt="Parivahan Sewa"
-						class="img-responsive" style="width:40px;
-	height:50px; " /&gt;
-
-				&lt;/a&gt;
-				&lt;a style="display: inline-block;margin-top:15px;" class="top-space"&gt; &lt;p:graphicImage
-						library="images" name="Digital-india-black.png" alt="Parivahan Sewa"
-						class="img-responsive digital-india"/&gt;
-
-				&lt;/a&gt;
-			&lt;/div&gt;
-			&lt;div class="ui-grid-col-8"&gt;
-				&lt;div class="heading_w center-position top-space"&gt;
-					&lt;div
-						class="font-bold text-welcome-heading welcome-heading-size text-uppercase"&gt;ministry of road transport and highways&lt;/div&gt;
-					&lt;div
-						class="font-bold text-welcome-heading welcome-sub-heading-size"&gt;Government of India&lt;/div&gt;
-				&lt;/div&gt;
-			&lt;/div&gt;
-			&lt;div class="ui-grid-col-2 left_logo"&gt;
-				&lt;a style="display: inline-block;width: 120px;" class="top-space"&gt; &lt;p:graphicImage
-						library="images" name="e-puc-logo.png" alt="Parivahan Sewa"
-						class="img-responsive digital-india" /&gt;
-
-				&lt;/a&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;/nav&gt;
- -->
-<form id="menuForm" name="menuForm" method="post" action="/puc/views/error.xhtml" enctype="application/x-www-form-urlencoded">
-<input type="hidden" name="menuForm" value="menuForm" />
-<span id="menuForm:messages"></span><script id="menuForm:messages_s" type="text/javascript">$(function(){PrimeFaces.cw('Growl','widget_menuForm_messages',{id:'menuForm:messages',sticky:false,life:6000,escape:true,msgs:[]});});</script>
-		<nav class="navbar-default navigation-background" role="navigation">
-		<div class="navbar-header">
-			<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-
-				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-			</button>
-		</div>
-
-		<div id="navbarCollapse" class="collapse navbar-collapse navigation-background-nav">
-			<div class="container-fluid">
-				<ul class="nav navbar-nav" id="navbar">
-					<li><a id="menuForm:lnkLogin" name="menuForm:lnkLogin" href="/puc/views/login.xhtml" title="">
-							<span class="glyphicon glyphicon-home"></span>  Home</a></li>
-
-
-
-					<li><a href="/puc/views/RegisterUser.xhtml">
-							<span class="glyphicon glyphicon-file"></span>Register PUC Centre</a></li>
-
-					<li><a href="/puc/views/UploadDocuments.xhtml">
-							<span class="glyphicon glyphicon-file"></span>Upload Documents</a></li>
-					<li><a href="/puc/views/ApplicationSlip.xhtml">
-							<span class="glyphicon glyphicon-file"></span>Application Slip</a></li>
-
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Online Services </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown"><a href="/puc/views/OnlinePayment.xhtml" class="dropdown-item">
-								<span class="glyphicon glyphicon-file"></span>Online Payment for PUCC Centre</a>
-
-							<div class="dropdown-divider"></div><a href="/puc/views/OnlineFinePayment.xhtml" class="dropdown-item">
-								<span class="glyphicon glyphicon-file"></span>Online Payment for Vehicle Owner for Expiry of PUCC Certificate</a>
-							<div class="dropdown-divider"></div><a href="/puc/views/DownloadFeesReceipts.xhtml" class="dropdown-item">
-								<span class="glyphicon glyphicon-file"></span>Download Fine Receipts</a>
-
-							<div class="dropdown-divider"></div><a href="/puc/views/ApplicationStatusCheck.xhtml" class="dropdown-item">
-								<span class="glyphicon glyphicon-file"></span>Application Status</a>
-
-
-						
-
-						</div></li>
-
-					<li><a href="/puc/views/PucCertificate.xhtml">
-							<span class="glyphicon glyphicon-file"></span>PUC Certificate</a></li>
-
-					<li><a href="/puc/views/PUCCenterList.xhtml">
-							<span class="glyphicon glyphicon-file"></span>PUC Centre List</a></li>
-
-					<!-- &lt;li&gt;&lt;h:link outcome="/views/ApplicationStatusCheck.xhtml"&gt;
-							&lt;span class="glyphicon glyphicon-file"&gt;&lt;/span&gt;Application Status&lt;/h:link&gt;&lt;/li&gt; -->
-
-					<li><a href="/puc/views/ARAIApprovedEquipment.xhtml">
-							<span class="glyphicon glyphicon-file"></span>ARAI approved Equipment</a></li>
-
-					<li><a href="/puc/views/Notifications.xhtml">
-							<span class="glyphicon glyphicon-file"></span>Notifications and State Forms</a></li>
-
-					<li><a href="/puc/views/ContactUs.xhtml">
-							<span class="glyphicon glyphicon-file"></span>Contact Us</a></li>
-
-					<li><a id="menuForm:j_idt74" href="#" class="ui-commandlink ui-widget glyphicon " onclick="PrimeFaces.addSubmitParam('menuForm',{'menuForm:j_idt74':'menuForm:j_idt74'}).submit('menuForm');return false;PrimeFaces.onPost();">Help
-							<!--  &lt;p:fileDownload value="org.primefaces.model.DefaultStreamedContent@2657be9c" /&gt;--></a></li>
-						
-						
-						
-				</ul>
-			</div>
-		</div>
-		</nav><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:7" value="5834858715122638788:4898911220232654993" />
-</form>
-
-
-	<div class="main_news_w cont" style="margin-bottom: 9px;">
-
-
-		<div class="news_w">
-			<div data-direction="left" class="microsoft marquee marquee-c">
-
-				<!--&lt;span&gt;Online PUC Management Systems,best view in google chrome and IE, Version 2.0&lt;/span&gt;-->
-
-				<span style="color: #f5c20c"></span>
-				<!-- &lt;span&gt;  Due to System maintenance work ,Application will down from 1PM to 3PM  &lt;/span&gt; -->
-			</div>
-		</div>
-	</div>
-
-		<div class="container-fluid mar-all">
-			<div class="container1">
-<form id="formError" name="formError" method="post" action="/puc/views/error.xhtml" enctype="application/x-www-form-urlencoded">
-<input type="hidden" name="formError" value="formError" />
-
-					
-					<div class="ui-grid-col-5">
-
-						<div class="containerSection content-bg content-Space">
-							<div class="ui-grid-row">
-
-								<div class="ui-grid-col-12"><div id="ErrorPanel" class="ui-panel ui-widget ui-widget-content ui-corner-all" data-widget="widget_ErrorPanel"><div id="ErrorPanel_header" class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all"><span class="ui-panel-title">Error</span></div><div id="ErrorPanel_content" class="ui-panel-content ui-widget-content">
-										<div>
-
-											<div class="ui-grid-row">
-												<div class="ui-grid-col-12"><label id="j_idt81" class="ui-outputlabel ui-widget">Error in Login</label>
-												</div>
-											</div>
-										</div></div></div><script id="ErrorPanel_s" type="text/javascript">PrimeFaces.cw("Panel","widget_ErrorPanel",{id:"ErrorPanel"});</script>
-								</div>
-							</div>
-						</div>
-					</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:9" value="5834858715122638788:4898911220232654993" />
-</form>
-			</div>
-
-			<div class="ui-grid-row">
-				<div class="ui-grid-col-12">
-					<div id="footer_view"><html xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt86"><link type="text/css" rel="stylesheet" href="/puc/javax.faces.resource/theme.css.xhtml?ln=primefaces-homologation" /><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';PrimeFaces.settings.projectStage='Development';}</script>
-
-	<title>This is footer</title>
-	<script>
-		history.pushState(null, null, location.href);
-
-		history.back();
-
-		history.forward();
-
-		window.onpopstate = function() {
-			history.go(1);
-		};
-	</script></head><body>
-<form id="j_idt89" name="j_idt89" method="post" action="/puc/views/error.xhtml" enctype="application/x-www-form-urlencoded">
-<input type="hidden" name="j_idt89" value="j_idt89" />
-
-
-		<div class="footer-bottom">
-
-			<div class="container-fluid">
-
-				<div class="row mar-all">
-
-					<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 left-position">
-
-						<div class="copyright"><img id="j_idt91" src="/puc/javax.faces.resource/nic-logo.png.xhtml?ln=images" alt="Parivahan Sewa" />
-
-						</div>
-
-					</div>
-
-					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 right-position">
-
-						<div class="design right-position1">
-
-							<a target="https://www.nic.in/" href="https://www.nic.in/"><label id="j_idt93" class="ui-outputlabel ui-widget"></label>
-								Powered by National Informatics Centre. All Rights Reserved.
-							</a> Version::2.3.9.8
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-
-		</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:11" value="5834858715122638788:4898911220232654993" />
-</form></body>
-</html>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
+</head>
+<body>
+  <div class="page">
+    <!-- Header / Branding -->
+    <div class="topbar">
+      <div class="branding">
+        <img class="emblem" src="" alt="emblem (placeholder)" />
+        <div class="titles">
+          <div class="gov">ministry of road transport and highways</div>
+          <div class="dept">Government of India</div>
+        </div>
+      </div>
+      <div class="top-links">
+        <!-- simplified nav controls -->
+        <a href="#">Home</a>
+        <a href="#main-content">Skip to main content</a>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <main id="main-content" role="main">
+      <h1>PUC Certificate Details Details</h1>
+
+      <div class="note">Please check response is coming from</div>
+      <a class="source-link" href="https://puc.parivahan.gov.in/">https://puc.parivahan.gov.in/...</a>
+
+      <div class="meta-list" aria-live="polite">
+        <div class="meta-row"><div class="meta-label">Registration Number :</div><div class="meta-value">AS01BN5813</div></div>
+        <div class="meta-row"><div class="meta-label"></div><div class="meta-value">PETROL/CNG/LPG DRIVEN VEHICLES</div></div>
+        <div class="meta-row"><div class="meta-label">Test Date:</div><div class="meta-value">10-Sep-2025</div></div>
+        <div class="meta-row"><div class="meta-label">Valid Upto:</div><div class="meta-value">09-Mar-2026</div></div>
+        <div class="meta-row"><div class="meta-label">Fees::</div><div class="meta-value">0.0</div></div>
+        <div class="meta-row"><div class="meta-label">Pollution under control::</div><div class="meta-value">YES</div></div>
+      </div>
+
+      <!-- Table: only outer border -->
+      <div class="table-wrap" aria-label="PUC values table">
+        <table class="puc-table" role="table">
+          <colgroup>
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Prescribed Value</th>
+              <th>Measured Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CO</td>
+              <td style="text-align:center">0.5</td>
+              <td style="text-align:center">0.108</td>
+            </tr>
+            <tr>
+              <td>HC</td>
+              <td style="text-align:center">750.0</td>
+              <td style="text-align:center">61.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div>Powered by National Informatics Centre. All Rights Reserved. Version::2.3.9.8</div>
+      <div style="margin-top:8px"><a href="https://www.nic.in/" target="_blank" rel="noopener">https://www.nic.in/</a></div>
+    </div>
+  </div>
 </body>
-<!--&lt;f:view contentType="text/html" id="fview"
-	locale="en_US"&gt;
-
-	&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
-	&lt;title&gt;Welcome Transport Department &lt;/title&gt;
-	&lt;ui:debug /&gt;
-	&lt;f:metadata&gt;
-		&lt;ui:insert name="metadata" /&gt;
-	&lt;/f:metadata&gt;
-
-	&lt;h:head&gt;
-
-			&lt;h:outputStylesheet library="css" name="style.css" /&gt;
-			&lt;h:outputScript library="js" name="common.js" /&gt;
-			&lt;h:outputScript library="js" name="login.js" /&gt;
-			&lt;h:outputScript library="js" name="md5.js" /&gt;
-			&lt;h:outputScript library="js" name="SHA512.js" /&gt;
-
-		&lt;p:layout fullPage="true" resizeTitle="resize" 
-			style="background-color:#FFFFFF;"&gt;
-
-			&lt;p:layoutUnit styleClass="layoutUnitCenter" position="center"&gt;
-			&lt;ui:include src="header.xhtml" /&gt;
-&lt;ui:include src="menu.xhtml" /&gt;
-				&lt;ui:insert name="content" /&gt;
-
-			&lt;/p:layoutUnit&gt;
-
-			
-
-		&lt;/p:layout&gt;
-
-		&lt;p:dialog modal="true" widgetVar="statusDialog" showHeader="false"
-			draggable="false" closable="false" resizable="false" visible="false"
-			position="center" maximizable="false" minimizable="false"&gt;
-			
-		&lt;/p:dialog&gt;
-
-
-	&lt;/h:head&gt;
-
-
-
-&lt;/f:view&gt;-->
 </html>
