@@ -22,18 +22,18 @@
     }
     table {
       margin-top: 15px;
-      border-collapse: collapse;
-      border: 1px solid #999;
+      border-collapse: separate;
+      border: 1px solid #999; /* outer border */
+      border-radius: 2px;
       width: 420px;
     }
-    table td {
-      border: 1px solid #999;
-      padding: 8px 12px;
+    th, td {
+      padding: 10px 16px;
       text-align: left;
+      border: none; /* no inner gridlines */
     }
-    table tr:first-child td,
-    table tr:nth-child(2) td {
-      font-weight: normal;
+    th {
+      font-weight: bold;
     }
   </style>
 </head>
@@ -52,9 +52,9 @@
 
   <table>
     <tr>
-      <td></td>
-      <td>Prescribed Value</td>
-      <td>Measured Value</td>
+      <th></th>
+      <th>Prescribed Value</th>
+      <th>Measured Value</th>
     </tr>
     <tr>
       <td>CO</td>
