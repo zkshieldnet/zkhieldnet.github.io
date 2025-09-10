@@ -1,71 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PUC Certificate Details</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 30px;
+      margin: 40px;
+      color: #000;
+      line-height: 1.35;
+      letter-spacing: 0; /* match screenshot */
     }
-    h2 {
-      font-weight: bold;
+
+    h1 {
+      font-size: 24px;   /* tuned */
+      font-weight: 700;  /* only heading is bold */
+      margin: 0 0 18px 0;
     }
-    p {
+
+    .note {
+      font-size: 15px;
       margin: 6px 0;
+      font-weight: 400;
     }
-    a {
-      font-weight: bold;
+
+    .source-link {
+      display: block;
+      margin: 6px 0 14px;
+      font-size: 15px;
       text-decoration: none;
-      color: #0000cc;
+      color: #0000cc; /* screenshot link color */
+      font-weight: 400;
     }
-    table {
-      margin-top: 15px;
+
+    .meta {
+      font-size: 15px;
+      margin: 4px 0;
+      font-weight: 400;
+    }
+    .meta .label {
+      display: inline-block;
+      width: 240px;  /* aligns values like screenshot */
+    }
+
+    /* Table */
+    .puc-table {
+      margin-top: 16px;
+      width: 90%; /* wide like screenshot */
+      border: 1px solid #bbb; /* thin outer border */
       border-collapse: separate;
-      border: 1px solid #999; /* outer border */
       border-radius: 2px;
-      width: 420px;
+      overflow: hidden;
+      background: #fff;
     }
-    th, td {
-      padding: 10px 16px;
+    .puc-table th,
+    .puc-table td {
+      font-size: 15px;
+      font-weight: 400;
+      padding: 10px 14px;
       text-align: left;
-      border: none; /* no inner gridlines */
+      border: none; /* no inner borders */
     }
-    th {
-      font-weight: bold;
+    .puc-table thead th {
+      font-weight: 400;
     }
   </style>
 </head>
 <body>
-  <h2>PUC Certificate Details Details</h2>
+  <h1>PUC Certificate Details Details</h1>
 
-  <p><b>Please check response is coming from</b></p>
-  <p><a href="#">https://puc.parivahan.gov.in/...</a></p>
+  <div class="note">Please check response is coming from</div>
+  <a class="source-link" href="#">https://puc.parivahan.gov.in/...</a>
 
-  <p><b>Registration Number :</b> AS01BN5813</p>
-  <p><b>PETROL/CNG/LPG DRIVEN VEHICLES</b></p>
-  <p><b>Test Date:</b> 10-Sep-2025</p>
-  <p><b>Valid Upto:</b> 09-Mar-2026</p>
-  <p><b>Fees::</b> 0.0</p>
-  <p><b>Pollution under control::</b> YES</p>
+  <div class="meta"><span class="label">Registration Number :</span><span class="value">AS01BN5813</span></div>
+  <div class="meta"><span class="label"></span><span class="value">PETROL/CNG/LPG DRIVEN VEHICLES</span></div>
+  <div class="meta"><span class="label">Test Date:</span><span class="value">10-Sep-2025</span></div>
+  <div class="meta"><span class="label">Valid Upto:</span><span class="value">09-Mar-2026</span></div>
+  <div class="meta"><span class="label">Fees::</span><span class="value">0.0</span></div>
+  <div class="meta"><span class="label">Pollution under control::</span><span class="value">YES</span></div>
 
-  <table>
-    <tr>
-      <th></th>
-      <th>Prescribed Value</th>
-      <th>Measured Value</th>
-    </tr>
-    <tr>
-      <td>CO</td>
-      <td>0.5</td>
-      <td>0.108</td>
-    </tr>
-    <tr>
-      <td>HC</td>
-      <td>750.0</td>
-      <td>61.0</td>
-    </tr>
+  <table class="puc-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Prescribed Value</th>
+        <th>Measured Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CO</td>
+        <td>0.5</td>
+        <td>0.108</td>
+      </tr>
+      <tr>
+        <td>HC</td>
+        <td>750.0</td>
+        <td>61.0</td>
+      </tr>
+    </tbody>
   </table>
 </body>
 </html>
